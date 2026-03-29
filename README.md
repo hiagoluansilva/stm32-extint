@@ -1,38 +1,41 @@
-🇧🇷 Português | 🇺🇸 [English](#english)
+# STM32 EXTI — Interrupção Externa
 
-# stm32-extint
-
-Interrupção externa EXTI13 no STM32F4xx — toggle de LED por botão com NVIC.
-
-```c
-void EXTI15_10_IRQHandler(void) {
-    EXTI->PR |= EXTI_PR_PR13;
-    GPIOA->ODR ^= GPIO_ODR_ODR_5;
-}
-```
-
-## IDE
-
-Atollic TrueSTUDIO 9.3 / STM32CubeIDE
-Centro Tecnológico Liberato — Novo Hamburgo/RS
+🇧🇷 **Português** | 🇺🇸 [English](#english)
 
 ---
 
-<a name="english"></a>
-🇧🇷 [Português](#) | 🇺🇸 English
+## Português
 
-# stm32-extint
+Demonstração de interrupção externa (EXTI) no STM32F4xx: botão configura linha EXTI, aciona callback e alterna LED.
 
-External interrupt EXTI13 on STM32F4xx — LED toggle on button press via NVIC.
+### O que faz
+- Configura linha **EXTI** para detectar borda (subida ou descida) em botão
+- Na interrupção: executa `HAL_GPIO_EXTI_Callback`
+- Alterna estado de **LED** em resposta ao evento
 
-```c
-void EXTI15_10_IRQHandler(void) {
-    EXTI->PR |= EXTI_PR_PR13;
-    GPIOA->ODR ^= GPIO_ODR_ODR_5;
-}
-```
+### Conceitos demonstrados
+- Configuração de EXTI via STM32 HAL
+- NVIC — prioridade e habilitação da interrupção
+- `HAL_GPIO_EXTI_Callback` como handler
 
-## IDE
+### Microcontrolador
+STM32F4xx — Atollic TrueSTUDIO / STM32CubeMX
 
-Atollic TrueSTUDIO 9.3 / STM32CubeIDE
-Centro Tecnológico Liberato — Novo Hamburgo/RS, Brazil
+---
+
+## English
+
+External interrupt (EXTI) demonstration on STM32F4xx: button configures EXTI line, triggers callback, and toggles LED.
+
+### What it does
+- Configures **EXTI** line to detect edge (rising or falling) on a button
+- On interrupt: executes `HAL_GPIO_EXTI_Callback`
+- Toggles **LED** state in response to the event
+
+### Concepts demonstrated
+- EXTI configuration via STM32 HAL
+- NVIC — interrupt priority and enable
+- `HAL_GPIO_EXTI_Callback` as handler
+
+### MCU
+STM32F4xx — Atollic TrueSTUDIO / STM32CubeMX
